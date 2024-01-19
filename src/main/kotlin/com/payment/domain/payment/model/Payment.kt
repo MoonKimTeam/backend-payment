@@ -14,22 +14,22 @@ class Payment(
     val id: Long = 0L,
 
     @Comment("예약 id")
-    @Column(name = "reservation_id")
+    @Column(name = "reservation_id", nullable = false)
     var reservationId: Long,
 
     @Comment("결제자 이메일")
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     var email: String,
 
     @Comment("결제자 휴대폰 번호")
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", nullable = false)
     var phoneNumber: String,
 
     @Comment("결제자 이름")
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     var name: String,
 
     @Comment("결제 가격")
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     var price: BigDecimal
 ): BaseEntity()
