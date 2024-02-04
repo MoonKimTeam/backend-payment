@@ -1,5 +1,6 @@
 package com.payment.domain.payment.model
 
+import com.payment.domain.payment.controller.request.PaymentRequest
 import com.payment.global.entity.BaseEntity
 import jakarta.persistence.*
 import org.hibernate.annotations.Comment
@@ -32,4 +33,17 @@ class Payment(
     @Comment("결제 가격")
     @Column(name = "price", nullable = false)
     var price: BigDecimal
-): BaseEntity()
+): BaseEntity() {
+
+    companion object {
+        fun from(
+            paymentRequest: PaymentRequest
+        ): Payment = Payment(
+            reservationId = paymentRequest.reservationId,
+            email = paymentRequest.email,
+            phoneNumber = paymentRequest.phoneNumber,
+            name = paymentRequest.name,
+            price = paymentRequest.price
+        )
+    }
+}
